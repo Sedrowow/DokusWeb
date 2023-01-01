@@ -1,0 +1,785 @@
+/* --------------------------------
+
+Primary style
+
+-------------------------------- */
+/* line 15, C:/Users/sedri/Documents/CHAOSCODE/Programs_School/HTML-NEWS/scss/style.scss */
+*, *::after, *::before {
+  box-sizing: border-box;
+}
+
+/* line 19, C:/Users/sedri/Documents/CHAOSCODE/Programs_School/HTML-NEWS/scss/style.scss */
+html {
+  font-size: 62.5%;
+}
+
+/* line 23, C:/Users/sedri/Documents/CHAOSCODE/Programs_School/HTML-NEWS/scss/style.scss */
+body {
+  font-size: 1.6rem;
+  font-family: "Open Sans", sans-serif;
+  color: #363558;
+  background-color: #1c1726;
+}
+
+/* line 32, C:/Users/sedri/Documents/CHAOSCODE/Programs_School/HTML-NEWS/scss/style.scss */
+a {
+  color: #544173;
+  text-decoration: none;
+}
+
+/* line 37, C:/Users/sedri/Documents/CHAOSCODE/Programs_School/HTML-NEWS/scss/style.scss */
+h1, h2 {
+  font-family: "Vollkorn", serif;
+}
+
+/* --------------------------------
+
+Patterns - reusable parts of our design
+
+-------------------------------- */
+/* line 47, C:/Users/sedri/Documents/CHAOSCODE/Programs_School/HTML-NEWS/scss/style.scss */
+.overflow-hidden {
+  overflow: hidden;
+}
+
+/* --------------------------------
+
+Header
+
+-------------------------------- */
+/* line 57, C:/Users/sedri/Documents/CHAOSCODE/Programs_School/HTML-NEWS/scss/style.scss */
+header {
+  height: 170px;
+  line-height: 170px;
+  text-align: center;
+  background: #ffffff;
+}
+
+/* line 63, C:/Users/sedri/Documents/CHAOSCODE/Programs_School/HTML-NEWS/scss/style.scss */
+header h1 {
+  font-size: 2.2rem;
+  color: #363558;
+}
+
+@media only screen and (min-width: 600px) {
+  /* line 57, C:/Users/sedri/Documents/CHAOSCODE/Programs_School/HTML-NEWS/scss/style.scss */
+  header {
+    height: 200px;
+    line-height: 200px;
+  }
+  /* line 72, C:/Users/sedri/Documents/CHAOSCODE/Programs_School/HTML-NEWS/scss/style.scss */
+  header h1 {
+    font-size: 3rem;
+  }
+}
+
+/* --------------------------------
+
+Main content
+
+-------------------------------- */
+/* line 84, C:/Users/sedri/Documents/CHAOSCODE/Programs_School/HTML-NEWS/scss/style.scss */
+.cd-main {
+  overflow-x: hidden;
+}
+
+/* line 87, C:/Users/sedri/Documents/CHAOSCODE/Programs_School/HTML-NEWS/scss/style.scss */
+.cd-main::before {
+  /* never visible - this is used in jQuery to check the current MQ */
+  display: none;
+  content: 'mobile';
+}
+
+/* line 93, C:/Users/sedri/Documents/CHAOSCODE/Programs_School/HTML-NEWS/scss/style.scss */
+.cd-main > * {
+  -webkit-transition: transform 0.5s, 0.4s;
+  -moz-transition: transform 0.5s, 0.4s;
+  -ms-transition: transform 0.5s, 0.4s;
+  -o-transition: transform 0.5s, 0.4s;
+  transition: transform 0.5s, 0.4s;
+}
+
+/* line 97, C:/Users/sedri/Documents/CHAOSCODE/Programs_School/HTML-NEWS/scss/style.scss */
+.cd-main.fold-is-open > * {
+  /* on mobile - translate .cd-main content to the right when the .cd-folding-panel is open */
+  -webkit-transform: translateX(100%);
+  -moz-transform: translateX(100%);
+  -ms-transform: translateX(100%);
+  transform: translateX(100%);
+  -webkit-transition: transform 0.5s 0s;
+  -moz-transition: transform 0.5s 0s;
+  -ms-transition: transform 0.5s 0s;
+  -o-transition: transform 0.5s 0s;
+  transition: transform 0.5s 0s;
+}
+
+@media only screen and (min-width: 600px) {
+  /* line 105, C:/Users/sedri/Documents/CHAOSCODE/Programs_School/HTML-NEWS/scss/style.scss */
+  .cd-main.fold-is-open > * {
+    -webkit-transform: translateX(600px);
+    -moz-transform: translateX(600px);
+    -ms-transform: translateX(600px);
+    transform: translateX(600px);
+  }
+}
+
+@media only screen and (min-width: 1100px) {
+  /* line 112, C:/Users/sedri/Documents/CHAOSCODE/Programs_School/HTML-NEWS/scss/style.scss */
+  .cd-main::before {
+    /* never visible - this is used in jQuery to check the current MQ */
+    content: 'desktop';
+  }
+  /* line 117, C:/Users/sedri/Documents/CHAOSCODE/Programs_School/HTML-NEWS/scss/style.scss */
+  .cd-main.fold-is-open > * {
+    /* reset style - on bigger devices we translate the gallery items */
+    -webkit-transform: translateX(0);
+    -moz-transform: translateX(0);
+    -ms-transform: translateX(0);
+    transform: translateX(0);
+  }
+}
+
+/* line 20, node_modules/bourbon/core/bourbon/library/_clearfix.scss */
+.cd-gallery::after {
+  clear: both;
+  content: "";
+  display: block;
+}
+
+/* line 127, C:/Users/sedri/Documents/CHAOSCODE/Programs_School/HTML-NEWS/scss/style.scss */
+.cd-gallery::before {
+  /* this is the dark layer covering the .cd-gallery when the .cd-folding-panel is open */
+  display: block;
+  content: '';
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(28, 23, 38, 0.6);
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: opacity 0.5s 0.4s, visibility 0s 0.9s;
+  -moz-transition: opacity 0.5s 0.4s, visibility 0s 0.9s;
+  -ms-transition: opacity 0.5s 0.4s, visibility 0s 0.9s;
+  -o-transition: opacity 0.5s 0.4s, visibility 0s 0.9s;
+  transition: opacity 0.5s 0.4s, visibility 0s 0.9s;
+}
+
+/* line 143, C:/Users/sedri/Documents/CHAOSCODE/Programs_School/HTML-NEWS/scss/style.scss */
+.fold-is-open .cd-gallery::before {
+  visibility: visible;
+  opacity: 1;
+  -webkit-transition: opacity 0.5s 0s, visibility 0s 0s;
+  -moz-transition: opacity 0.5s 0s, visibility 0s 0s;
+  -ms-transition: opacity 0.5s 0s, visibility 0s 0s;
+  -o-transition: opacity 0.5s 0s, visibility 0s 0s;
+  transition: opacity 0.5s 0s, visibility 0s 0s;
+}
+
+/* line 150, C:/Users/sedri/Documents/CHAOSCODE/Programs_School/HTML-NEWS/scss/style.scss */
+.cd-item {
+  width: 100%;
+  height: 300px;
+  text-align: center;
+  /* Force Hardware Acceleration */
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transition: transform 0.5s 0.4s;
+  -moz-transition: transform 0.5s 0.4s;
+  -ms-transition: transform 0.5s 0.4s;
+  -o-transition: transform 0.5s 0.4s;
+  transition: transform 0.5s 0.4s;
+}
+
+/* line 161, C:/Users/sedri/Documents/CHAOSCODE/Programs_School/HTML-NEWS/scss/style.scss */
+.cd-item > a {
+  display: table;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  color: #ffffff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* line 169, C:/Users/sedri/Documents/CHAOSCODE/Programs_School/HTML-NEWS/scss/style.scss */
+.cd-item > a.dark-text {
+  color: #363558;
+}
+
+/* line 172, C:/Users/sedri/Documents/CHAOSCODE/Programs_School/HTML-NEWS/scss/style.scss */
+.cd-item > a.dark-text b {
+  border-color: #363558;
+}
+
+/* line 178, C:/Users/sedri/Documents/CHAOSCODE/Programs_School/HTML-NEWS/scss/style.scss */
+.cd-item div {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+/* line 183, C:/Users/sedri/Documents/CHAOSCODE/Programs_School/HTML-NEWS/scss/style.scss */
+.cd-item:nth-of-type(1) {
+  background-color: #363558;
+}
+
+/* line 187, C:/Users/sedri/Documents/CHAOSCODE/Programs_School/HTML-NEWS/scss/style.scss */
+.cd-item:nth-of-type(2) {
+  background-color: #544173;
+}
+
+/* line 191, C:/Users/sedri/Documents/CHAOSCODE/Programs_School/HTML-NEWS/scss/style.scss */
+.cd-item:nth-of-type(3) {
+  background-color: #dadcdc;
+}
+
+/* line 195, C:/Users/sedri/Documents/CHAOSCODE/Programs_School/HTML-NEWS/scss/style.scss */
+.cd-item:nth-of-type(4) {
+  background-color: #65d29b;
+}
+
+/* line 199, C:/Users/sedri/Documents/CHAOSCODE/Programs_School/HTML-NEWS/scss/style.scss */
+.cd-item h2 {
+  font-size: 2.2rem;
+}
+
+/* line 203, C:/Users/sedri/Documents/CHAOSCODE/Programs_School/HTML-NEWS/scss/style.scss */
+.cd-item p {
+  line-height: 1.2;
+  font-size: 1.4rem;
+  opacity: 0.6;
+  padding: 1em 0;
+}
+
+/* line 210, C:/Users/sedri/Documents/CHAOSCODE/Programs_School/HTML-NEWS/scss/style.scss */
+.cd-item b {
+  display: inline-block;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 1em 1.3em;
+  border-radius: 50em;
+  border: 1px solid #ffffff;
+}
+
+@media only screen and (min-width: 1100px) {
+  /* line 150, C:/Users/sedri/Documents/CHAOSCODE/Programs_School/HTML-NEWS/scss/style.scss */
+  .cd-item {
+    width: 50%;
+    float: left;
+    height: 520px;
+    -webkit-transition: transform 0.5s 0.4s;
+    -moz-transition: transform 0.5s 0.4s;
+    -ms-transition: transform 0.5s 0.4s;
+    -o-transition: transform 0.5s 0.4s;
+    transition: transform 0.5s 0.4s;
+  }
+  /* line 228, C:/Users/sedri/Documents/CHAOSCODE/Programs_School/HTML-NEWS/scss/style.scss */
+  .cd-item h2 {
+    font-size: 3rem;
+  }
+  /* line 232, C:/Users/sedri/Documents/CHAOSCODE/Programs_School/HTML-NEWS/scss/style.scss */
+  .cd-item p {
+    font-size: 1.6rem;
+  }
+  /* line 236, C:/Users/sedri/Documents/CHAOSCODE/Programs_School/HTML-NEWS/scss/style.scss */
+  .cd-item h2, .cd-item p {
+    -webkit-transform: translateY(30px);
+    -moz-transform: translateY(30px);
+    -ms-transform: translateY(30px);
+    transform: translateY(30px);
+    -webkit-transition: transform 0.3s 0.1s;
+    -moz-transition: transform 0.3s 0.1s;
+    -ms-transition: transform 0.3s 0.1s;
+    -o-transition: transform 0.3s 0.1s;
+    transition: transform 0.3s 0.1s;
+  }
+  /* line 241, C:/Users/sedri/Documents/CHAOSCODE/Programs_School/HTML-NEWS/scss/style.scss */
+  .cd-item b {
+    opacity: 0;
+    -webkit-transform: translateY(20px);
+    -moz-transform: translateY(20px);
+    -ms-transform: translateY(20px);
+    transform: translateY(20px);
+    -webkit-transition: opacity 0.3s 0s, transform 0.3s 0s;
+    -moz-transition: opacity 0.3s 0s, transform 0.3s 0s;
+    -ms-transition: opacity 0.3s 0s, transform 0.3s 0s;
+    -o-transition: opacity 0.3s 0s, transform 0.3s 0s;
+    transition: opacity 0.3s 0s, transform 0.3s 0s;
+  }
+  /* line 249, C:/Users/sedri/Documents/CHAOSCODE/Programs_School/HTML-NEWS/scss/style.scss */
+  .no-touch .cd-item a:hover h2, .no-touch .cd-item a:hover p {
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    transform: translateY(0);
+    -webkit-transition: transform 0.3s 0s;
+    -moz-transition: transform 0.3s 0s;
+    -ms-transition: transform 0.3s 0s;
+    -o-transition: transform 0.3s 0s;
+    transition: transform 0.3s 0s;
+  }
+  /* line 254, C:/Users/sedri/Documents/CHAOSCODE/Programs_School/HTML-NEWS/scss/style.scss */
+  .no-touch .cd-item a:hover b {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    transform: translateY(0);
+    -webkit-transition: opacity 0.3s 0.1s, transform 0.3s 0.1s;
+    -moz-transition: opacity 0.3s 0.1s, transform 0.3s 0.1s;
+    -ms-transition: opacity 0.3s 0.1s, transform 0.3s 0.1s;
+    -o-transition: opacity 0.3s 0.1s, transform 0.3s 0.1s;
+    transition: opacity 0.3s 0.1s, transform 0.3s 0.1s;
+  }
+  /* line 261, C:/Users/sedri/Documents/CHAOSCODE/Programs_School/HTML-NEWS/scss/style.scss */
+  .fold-is-open .cd-item {
+    -webkit-transition: transform 0.5s 0s;
+    -moz-transition: transform 0.5s 0s;
+    -ms-transition: transform 0.5s 0s;
+    -o-transition: transform 0.5s 0s;
+    transition: transform 0.5s 0s;
+    -webkit-transform: translateX(-400px);
+    -moz-transform: translateX(-400px);
+    -ms-transform: translateX(-400px);
+    transform: translateX(-400px);
+  }
+  /* line 265, C:/Users/sedri/Documents/CHAOSCODE/Programs_School/HTML-NEWS/scss/style.scss */
+  .fold-is-open .cd-item:nth-of-type(2n) {
+    -webkit-transform: translateX(400px);
+    -moz-transform: translateX(400px);
+    -ms-transform: translateX(400px);
+    transform: translateX(400px);
+  }
+}
+
+/* --------------------------------
+
+folding panel
+
+-------------------------------- */
+/* line 278, C:/Users/sedri/Documents/CHAOSCODE/Programs_School/HTML-NEWS/scss/style.scss */
+.cd-folding-panel {
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  visibility: hidden;
+  overflow: hidden;
+  -webkit-transition: visibility 0s 0.9s;
+  -moz-transition: visibility 0s 0.9s;
+  -ms-transition: visibility 0s 0.9s;
+  -o-transition: visibility 0s 0.9s;
+  transition: visibility 0s 0.9s;
+}
+
+/* line 290, C:/Users/sedri/Documents/CHAOSCODE/Programs_School/HTML-NEWS/scss/style.scss */
+.cd-folding-panel .fold-left,
+.cd-folding-panel .fold-right {
+  /* the :after elements of .fold-left and .fold-right are the 2 fold sides */
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  /* enable a 3D-space for children elements */
+  -webkit-perspective: 2000px;
+  -moz-perspective: 2000px;
+  -ms-perspective: 2000px;
+  perspective: 2000px;
+}
+
+/* line 301, C:/Users/sedri/Documents/CHAOSCODE/Programs_School/HTML-NEWS/scss/style.scss */
+.cd-folding-panel .fold-left::after,
+.cd-folding-panel .fold-right::after {
+  /* 2 fold sides */
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  /* Force Hardware Acceleration */
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transition: transform 0.5s 0.4s, background-color 0.5s 0.4s;
+  -moz-transition: transform 0.5s 0.4s, background-color 0.5s 0.4s;
+  -ms-transition: transform 0.5s 0.4s, background-color 0.5s 0.4s;
+  -o-transition: transform 0.5s 0.4s, background-color 0.5s 0.4s;
+  transition: transform 0.5s 0.4s, background-color 0.5s 0.4s;
+}
+
+/* line 318, C:/Users/sedri/Documents/CHAOSCODE/Programs_School/HTML-NEWS/scss/style.scss */
+.cd-folding-panel .fold-right {
+  -webkit-perspective-origin: 0% 50%;
+  -moz-perspective-origin: 0% 50%;
+  -ms-perspective-origin: 0% 50%;
+  perspective-origin: 0% 50%;
+}
+
+/* line 321, C:/Users/sedri/Documents/CHAOSCODE/Programs_School/HTML-NEWS/scss/style.scss */
+.cd-folding-panel .fold-right::after {
+  -webkit-transform-origin: right center;
+  -moz-transform-origin: right center;
+  -ms-transform-origin: right center;
+  transform-origin: right center;
+  -webkit-transform: translateX(-100%) rotateY(-90deg);
+  -moz-transform: translateX(-100%) rotateY(-90deg);
+  -ms-transform: translateX(-100%) rotateY(-90deg);
+  transform: translateX(-100%) rotateY(-90deg);
+  background-color: #c0c3c3;
+}
+
+/* line 328, C:/Users/sedri/Documents/CHAOSCODE/Programs_School/HTML-NEWS/scss/style.scss */
+.cd-folding-panel .fold-left {
+  /* on mobile only the right fold side is visible */
+  display: none;
+}
+
+/* line 332, C:/Users/sedri/Documents/CHAOSCODE/Programs_School/HTML-NEWS/scss/style.scss */
+.cd-folding-panel .fold-left::after {
+  background-color: #f9fafa;
+}
+
+/* line 337, C:/Users/sedri/Documents/CHAOSCODE/Programs_School/HTML-NEWS/scss/style.scss */
+.cd-folding-panel .cd-close {
+  /* 'X' close icon */
+  position: absolute;
+  z-index: 1;
+  display: inline-block;
+  top: 10px;
+  right: 10px;
+  height: 44px;
+  width: 44px;
+  /* image replacement */
+  overflow: hidden;
+  text-indent: 100%;
+  white-space: nowrap;
+  opacity: 0;
+  -webkit-transition: opacity 0.2s 0s;
+  -moz-transition: opacity 0.2s 0s;
+  -ms-transition: opacity 0.2s 0s;
+  -o-transition: opacity 0.2s 0s;
+  transition: opacity 0.2s 0s;
+}
+
+/* line 355, C:/Users/sedri/Documents/CHAOSCODE/Programs_School/HTML-NEWS/scss/style.scss */
+.cd-folding-panel .cd-close::after, .cd-folding-panel .cd-close::before {
+  /* lines of 'X' icon */
+  content: '';
+  position: absolute;
+  height: 3px;
+  width: 32px;
+  left: 50%;
+  top: 50%;
+  background-color: #544173;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transition: opacity 0.2s;
+  -moz-transition: opacity 0.2s;
+  -ms-transition: opacity 0.2s;
+  -o-transition: opacity 0.2s;
+  transition: opacity 0.2s;
+}
+
+/* line 369, C:/Users/sedri/Documents/CHAOSCODE/Programs_School/HTML-NEWS/scss/style.scss */
+.cd-folding-panel .cd-close::after {
+  -webkit-transform: translateX(-50%) translateY(-50%) rotate(45deg);
+  -moz-transform: translateX(-50%) translateY(-50%) rotate(45deg);
+  -ms-transform: translateX(-50%) translateY(-50%) rotate(45deg);
+  transform: translateX(-50%) translateY(-50%) rotate(45deg);
+}
+
+/* line 373, C:/Users/sedri/Documents/CHAOSCODE/Programs_School/HTML-NEWS/scss/style.scss */
+.cd-folding-panel .cd-close::before {
+  -webkit-transform: translateX(-50%) translateY(-50%) rotate(-45deg);
+  -moz-transform: translateX(-50%) translateY(-50%) rotate(-45deg);
+  -ms-transform: translateX(-50%) translateY(-50%) rotate(-45deg);
+  transform: translateX(-50%) translateY(-50%) rotate(-45deg);
+}
+
+/* line 378, C:/Users/sedri/Documents/CHAOSCODE/Programs_School/HTML-NEWS/scss/style.scss */
+.cd-folding-panel.is-open {
+  visibility: visible;
+  -webkit-transition: visibility 0s 0s;
+  -moz-transition: visibility 0s 0s;
+  -ms-transition: visibility 0s 0s;
+  -o-transition: visibility 0s 0s;
+  transition: visibility 0s 0s;
+}
+
+/* line 382, C:/Users/sedri/Documents/CHAOSCODE/Programs_School/HTML-NEWS/scss/style.scss */
+.cd-folding-panel.is-open .fold-right::after,
+.cd-folding-panel.is-open .fold-left::after {
+  -webkit-transform: translateX(0);
+  -moz-transform: translateX(0);
+  -ms-transform: translateX(0);
+  transform: translateX(0);
+  -webkit-transition: transform 0.5s 0s, background-color 0.5s 0s;
+  -moz-transition: transform 0.5s 0s, background-color 0.5s 0s;
+  -ms-transition: transform 0.5s 0s, background-color 0.5s 0s;
+  -o-transition: transform 0.5s 0s, background-color 0.5s 0s;
+  transition: transform 0.5s 0s, background-color 0.5s 0s;
+}
+
+/* line 388, C:/Users/sedri/Documents/CHAOSCODE/Programs_School/HTML-NEWS/scss/style.scss */
+.cd-folding-panel.is-open .fold-right::after {
+  background-color: #f9fafa;
+}
+
+/* line 392, C:/Users/sedri/Documents/CHAOSCODE/Programs_School/HTML-NEWS/scss/style.scss */
+.cd-folding-panel.is-open .cd-close {
+  opacity: 1;
+  -webkit-transition: opacity 0.2s 0.5s;
+  -moz-transition: opacity 0.2s 0.5s;
+  -ms-transition: opacity 0.2s 0.5s;
+  -o-transition: opacity 0.2s 0.5s;
+  transition: opacity 0.2s 0.5s;
+}
+
+@media only screen and (min-width: 600px) {
+  /* line 278, C:/Users/sedri/Documents/CHAOSCODE/Programs_School/HTML-NEWS/scss/style.scss */
+  .cd-folding-panel {
+    width: 600px;
+  }
+}
+
+@media only screen and (min-width: 1100px) {
+  /* line 278, C:/Users/sedri/Documents/CHAOSCODE/Programs_School/HTML-NEWS/scss/style.scss */
+  .cd-folding-panel {
+    left: 50%;
+    right: auto;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+    width: 800px;
+  }
+  /* line 406, C:/Users/sedri/Documents/CHAOSCODE/Programs_School/HTML-NEWS/scss/style.scss */
+  .cd-folding-panel .fold-left,
+  .cd-folding-panel .fold-right {
+    width: 50%;
+    float: left;
+    height: 100%;
+  }
+  /* line 412, C:/Users/sedri/Documents/CHAOSCODE/Programs_School/HTML-NEWS/scss/style.scss */
+  .cd-folding-panel .fold-right {
+    /* change perspective-origin so that the 2 fold sides have the same vanishing point */
+    -webkit-perspective-origin: 0% 50%;
+    -moz-perspective-origin: 0% 50%;
+    -ms-perspective-origin: 0% 50%;
+    perspective-origin: 0% 50%;
+  }
+  /* line 416, C:/Users/sedri/Documents/CHAOSCODE/Programs_School/HTML-NEWS/scss/style.scss */
+  .cd-folding-panel .fold-right::after {
+    -webkit-transform-origin: right center;
+    -moz-transform-origin: right center;
+    -ms-transform-origin: right center;
+    transform-origin: right center;
+    -webkit-transform: translateX(-100%) rotateY(-90deg);
+    -moz-transform: translateX(-100%) rotateY(-90deg);
+    -ms-transform: translateX(-100%) rotateY(-90deg);
+    transform: translateX(-100%) rotateY(-90deg);
+  }
+  /* line 422, C:/Users/sedri/Documents/CHAOSCODE/Programs_School/HTML-NEWS/scss/style.scss */
+  .cd-folding-panel .fold-left {
+    display: block;
+    /* change perspective-origin so that the 2 fold sides have the same vanishing point */
+    -webkit-perspective-origin: 100% 50%;
+    -moz-perspective-origin: 100% 50%;
+    -ms-perspective-origin: 100% 50%;
+    perspective-origin: 100% 50%;
+  }
+  /* line 427, C:/Users/sedri/Documents/CHAOSCODE/Programs_School/HTML-NEWS/scss/style.scss */
+  .cd-folding-panel .fold-left::after {
+    -webkit-transform-origin: left center;
+    -moz-transform-origin: left center;
+    -ms-transform-origin: left center;
+    transform-origin: left center;
+    -webkit-transform: translateX(100%) rotateY(90deg);
+    -moz-transform: translateX(100%) rotateY(90deg);
+    -ms-transform: translateX(100%) rotateY(90deg);
+    transform: translateX(100%) rotateY(90deg);
+  }
+}
+
+/* line 435, C:/Users/sedri/Documents/CHAOSCODE/Programs_School/HTML-NEWS/scss/style.scss */
+.cd-fold-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  padding: 4em 2em;
+  visibility: hidden;
+  -webkit-transition: visibility 0s 0.4s;
+  -moz-transition: visibility 0s 0.4s;
+  -ms-transition: visibility 0s 0.4s;
+  -o-transition: visibility 0s 0.4s;
+  transition: visibility 0s 0.4s;
+}
+
+/* line 446, C:/Users/sedri/Documents/CHAOSCODE/Programs_School/HTML-NEWS/scss/style.scss */
+.cd-fold-content > * {
+  opacity: 0;
+  -webkit-transform: translateY(20px);
+  -moz-transform: translateY(20px);
+  -ms-transform: translateY(20px);
+  transform: translateY(20px);
+}
+
+/* line 451, C:/Users/sedri/Documents/CHAOSCODE/Programs_School/HTML-NEWS/scss/style.scss */
+.cd-fold-content h2 {
+  font-size: 2.4rem;
+  -webkit-transition: transform 0.2s 0.2s, opacity 0.2s 0.2s;
+  -moz-transition: transform 0.2s 0.2s, opacity 0.2s 0.2s;
+  -ms-transition: transform 0.2s 0.2s, opacity 0.2s 0.2s;
+  -o-transition: transform 0.2s 0.2s, opacity 0.2s 0.2s;
+  transition: transform 0.2s 0.2s, opacity 0.2s 0.2s;
+}
+
+/* line 457, C:/Users/sedri/Documents/CHAOSCODE/Programs_School/HTML-NEWS/scss/style.scss */
+.cd-fold-content p, .cd-fold-content em {
+  line-height: 1.6;
+}
+
+/* line 461, C:/Users/sedri/Documents/CHAOSCODE/Programs_School/HTML-NEWS/scss/style.scss */
+.cd-fold-content em {
+  display: inline-block;
+  margin: 1em 0;
+  font-family: "Vollkorn", serif;
+  font-size: 1.8rem;
+  color: #7a78ae;
+  -webkit-transition: transform 0.2s 0.1s, opacity 0.2s 0.1s;
+  -moz-transition: transform 0.2s 0.1s, opacity 0.2s 0.1s;
+  -ms-transition: transform 0.2s 0.1s, opacity 0.2s 0.1s;
+  -o-transition: transform 0.2s 0.1s, opacity 0.2s 0.1s;
+  transition: transform 0.2s 0.1s, opacity 0.2s 0.1s;
+}
+
+/* line 471, C:/Users/sedri/Documents/CHAOSCODE/Programs_School/HTML-NEWS/scss/style.scss */
+.cd-fold-content p {
+  margin-bottom: 1em;
+  font-size: 1.4rem;
+  -webkit-transition: transform 0.2s 0s, opacity 0.2s 0s;
+  -moz-transition: transform 0.2s 0s, opacity 0.2s 0s;
+  -ms-transition: transform 0.2s 0s, opacity 0.2s 0s;
+  -o-transition: transform 0.2s 0s, opacity 0.2s 0s;
+  transition: transform 0.2s 0s, opacity 0.2s 0s;
+}
+
+/* line 477, C:/Users/sedri/Documents/CHAOSCODE/Programs_School/HTML-NEWS/scss/style.scss */
+.is-open .cd-fold-content {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  visibility: visible;
+  -webkit-transition: visibility 0s 0.5s;
+  -moz-transition: visibility 0s 0.5s;
+  -ms-transition: visibility 0s 0.5s;
+  -o-transition: visibility 0s 0.5s;
+  transition: visibility 0s 0.5s;
+}
+
+/* line 483, C:/Users/sedri/Documents/CHAOSCODE/Programs_School/HTML-NEWS/scss/style.scss */
+.is-open .cd-fold-content > * {
+  opacity: 1;
+  -webkit-transform: translateY(0);
+  -moz-transform: translateY(0);
+  -ms-transform: translateY(0);
+  transform: translateY(0);
+}
+
+/* line 488, C:/Users/sedri/Documents/CHAOSCODE/Programs_School/HTML-NEWS/scss/style.scss */
+.is-open .cd-fold-content h2 {
+  -webkit-transition: transform 0.2s 0.5s, opacity 0.2s 0.5s;
+  -moz-transition: transform 0.2s 0.5s, opacity 0.2s 0.5s;
+  -ms-transition: transform 0.2s 0.5s, opacity 0.2s 0.5s;
+  -o-transition: transform 0.2s 0.5s, opacity 0.2s 0.5s;
+  transition: transform 0.2s 0.5s, opacity 0.2s 0.5s;
+}
+
+/* line 492, C:/Users/sedri/Documents/CHAOSCODE/Programs_School/HTML-NEWS/scss/style.scss */
+.is-open .cd-fold-content em {
+  -webkit-transition: transform 0.2s 0.6s, opacity 0.2s 0.6s;
+  -moz-transition: transform 0.2s 0.6s, opacity 0.2s 0.6s;
+  -ms-transition: transform 0.2s 0.6s, opacity 0.2s 0.6s;
+  -o-transition: transform 0.2s 0.6s, opacity 0.2s 0.6s;
+  transition: transform 0.2s 0.6s, opacity 0.2s 0.6s;
+}
+
+/* line 496, C:/Users/sedri/Documents/CHAOSCODE/Programs_School/HTML-NEWS/scss/style.scss */
+.is-open .cd-fold-content p {
+  -webkit-transition: transform 0.2s 0.7s, opacity 0.2s 0.7s;
+  -moz-transition: transform 0.2s 0.7s, opacity 0.2s 0.7s;
+  -ms-transition: transform 0.2s 0.7s, opacity 0.2s 0.7s;
+  -o-transition: transform 0.2s 0.7s, opacity 0.2s 0.7s;
+  transition: transform 0.2s 0.7s, opacity 0.2s 0.7s;
+}
+
+@media only screen and (min-width: 600px) {
+  /* line 502, C:/Users/sedri/Documents/CHAOSCODE/Programs_School/HTML-NEWS/scss/style.scss */
+  .cd-fold-content h2 {
+    font-size: 3.2rem;
+  }
+}
+
+@media only screen and (min-width: 1100px) {
+  /* line 435, C:/Users/sedri/Documents/CHAOSCODE/Programs_School/HTML-NEWS/scss/style.scss */
+  .cd-fold-content {
+    padding: 4em;
+  }
+  /* line 510, C:/Users/sedri/Documents/CHAOSCODE/Programs_School/HTML-NEWS/scss/style.scss */
+  .cd-fold-content > * {
+    -webkit-transform: translateY(40px);
+    -moz-transform: translateY(40px);
+    -ms-transform: translateY(40px);
+    transform: translateY(40px);
+  }
+  /* line 514, C:/Users/sedri/Documents/CHAOSCODE/Programs_School/HTML-NEWS/scss/style.scss */
+  .cd-fold-content em {
+    font-size: 2.2rem;
+  }
+  /* line 518, C:/Users/sedri/Documents/CHAOSCODE/Programs_School/HTML-NEWS/scss/style.scss */
+  .cd-fold-content p {
+    font-size: 1.6rem;
+  }
+}
+
+/* --------------------------------
+
+Javascript disabled
+
+-------------------------------- */
+/* line 530, C:/Users/sedri/Documents/CHAOSCODE/Programs_School/HTML-NEWS/scss/style.scss */
+.no-js .cd-fold-content.single-page {
+  position: static;
+  visibility: visible;
+  height: auto;
+  background-color: #dadcdc;
+}
+
+/* line 536, C:/Users/sedri/Documents/CHAOSCODE/Programs_School/HTML-NEWS/scss/style.scss */
+.no-js .cd-fold-content.single-page > * {
+  opacity: 1;
+  -webkit-transform: translateY(0);
+  -moz-transform: translateY(0);
+  -ms-transform: translateY(0);
+  transform: translateY(0);
+}
+
+/*# sourceMappingURL=style.css.map */
